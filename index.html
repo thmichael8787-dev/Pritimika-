@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>For Pritimika ♡</title>
+<meta name="theme-color" content="#f7dce8">
+<style>
+:root{--pink:#e879a5;--rose:#a83d70;--ink:#493444;--cream:#fff9fc;--lilac:#eee4fa}
+*{box-sizing:border-box}body{margin:0;font-family:Georgia,serif;color:var(--ink);background:linear-gradient(135deg,#fff7fb,#f5eafa 55%,#fff4f7);min-height:100vh}
+header{padding:28px 6vw 18px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.brand{font-size:1.2rem;color:var(--rose);letter-spacing:.04em}.top-actions{display:flex;gap:8px;align-items:center}
+button,.button{border:0;border-radius:999px;padding:11px 17px;background:var(--rose);color:white;font:600 .9rem system-ui;cursor:pointer;text-decoration:none}
+button.secondary,.button.secondary{background:#fff;color:var(--rose);border:1px solid #edc3d5}
+main{max-width:1050px;margin:auto;padding:20px 6vw 70px}
+.hero{text-align:center;padding:65px 15px 45px}.eyebrow{font:600 .75rem system-ui;letter-spacing:.22em;text-transform:uppercase;color:var(--pink)}
+h1{font-size:clamp(2.5rem,7vw,5rem);font-weight:400;line-height:1.04;margin:15px 0;color:#713b5a}
+.subtitle{font-size:1.12rem;line-height:1.7;max-width:560px;margin:0 auto 25px;color:#795c70}
+.heart{font-size:2rem;color:var(--pink);margin:16px}
+.panel{background:#ffffffc9;border:1px solid #f3dce7;border-radius:24px;padding:25px;box-shadow:0 14px 45px #8b54701a;margin:20px 0}
+h2{font-size:1.8rem;font-weight:400;margin:0 0 8px;color:#713b5a}.muted{color:#8d7584;font: .92rem/1.6 system-ui}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:14px;margin-top:20px}
+.card{border-radius:17px;overflow:hidden;background:#fff;border:1px solid #f2dce6;min-height:155px}
+.card img,.card video{width:100%;height:190px;object-fit:cover;display:block;background:#f6eaf0}
+.caption{padding:10px 12px;font: .9rem system-ui}
+input,textarea{width:100%;padding:13px 14px;border:1px solid #e8cbd9;border-radius:12px;background:#fff;font:1rem system-ui;color:var(--ink);margin:7px 0 13px}
+label{font:600 .85rem system-ui;color:#76566b}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.hidden{display:none!important}.notice{padding:12px 14px;border-radius:12px;background:#fff0f6;color:#854666;font: .9rem/1.5 system-ui;margin-top:12px}
+footer{text-align:center;padding:25px;color:#a17f93;font: .85rem system-ui}
+@media(max-width:600px){header{padding:20px 5vw}.hero{padding-top:42px}.row{grid-template-columns:1fr}.panel{padding:19px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">♡ for Pritimika</div>
+  <div class="top-actions">
+    <span id="userLabel" class="muted"></span>
+    <button id="signOutBtn" class="secondary hidden">Sign out</button>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <div class="eyebrow">a little place for us</div>
+    <h1>For<br>Pritimika<span style="color:#e879a5">.</span></h1>
+    <p class="subtitle">Every picture, every video, every tiny moment — a collection of memories that mean everything.</p>
+    <div class="heart">♡</div>
+  </section>
+
+  <section id="loginPanel" class="panel">
+    <h2>Welcome back, love</h2>
+    <p class="muted">Sign in to see and add your memories.</p>
+    <label for="email">Email</label><input id="email" type="email" placeholder="you@example.com" autocomplete="username">
+    <label for="password">Password</label><input id="password" type="password" placeholder="Your password" autocomplete="current-password">
+    <button id="loginBtn">Sign in ♡</button>
+    <button id="signupBtn" class="secondary">Create account</button>
+    <div id="authMessage" class="notice hidden"></div>
+  </section>
+
+  <section id="appPanel" class="hidden">
+    <section class="panel">
+      <h2>Our memories</h2>
+      <p class="muted">A collection of our sweetest moments, made just for you, Pritimika.</p>
+      <div class="row">
+        <div><label for="memoryTitle">Memory title</label><input id="memoryTitle" placeholder="A day to remember…"></div>
+        <div><label for="memoryDate">Date</label><input id="memoryDate" type="date"></div>
+      </div>
+      <label for="memoryNote">A little note</label><textarea id="memoryNote" rows="2" placeholder="Write something sweet…"></textarea>
+      <label for="mediaFile">Choose a photo or video</label><input id="mediaFile" type="file" accept="image/*,video/*">
+      <button id="uploadBtn">Add to our memories ♡</button>
+      <div id="uploadMessage" class="notice hidden"></div>
+    </section>
+    <section class="panel">
+      <h2>Photo & video gallery</h2>
+      <p class="muted">Only signed-in users allowed by your Firebase rules can view this gallery.</p>
+      <div id="gallery" class="grid"></div>
+      <p id="emptyState" class="muted">Your first memory is waiting to be added. ♡</p>
+    </section>
+  </section>
+  <section class="panel">
+    <h2>Our shared albums</h2>
+    <p class="muted">Your Google Drive albums appear below. Tap a photo or video to open it; use Drive's download option to save it.</p>
+    <h3 style="font-weight:400;color:#713b5a">Album one ♡</h3>
+    <iframe title="Our first Google Drive album" loading="lazy"
+      src="https://drive.google.com/embeddedfolderview?id=1UGXBVWaEgWhBjL0gUsc65Zmzsk8wcjA8#grid"
+      style="width:100%;height:480px;border:1px solid #f2dce6;border-radius:16px;background:white"></iframe>
+    <p><a class="button secondary" target="_blank" rel="noopener" href="https://drive.google.com/drive/folders/1UGXBVWaEgWhBjL0gUsc65Zmzsk8wcjA8">Open album one in Drive</a></p>
+    <h3 style="font-weight:400;color:#713b5a;margin-top:28px">Album two ♡</h3>
+    <iframe title="Our second Google Drive album" loading="lazy"
+      src="https://drive.google.com/embeddedfolderview?id=14igv4pgkDIBk3ovvI4yevgAKUZT5jRzB#grid"
+      style="width:100%;height:480px;border:1px solid #f2dce6;border-radius:16px;background:white"></iframe>
+    <p><a class="button secondary" target="_blank" rel="noopener" href="https://drive.google.com/drive/folders/14igv4pgkDIBk3ovvI4yevgAKUZT5jRzB">Open album two in Drive</a></p>
+    <div class="notice">For the embedded albums to work for visitors, set each Drive folder's General access to “Anyone with the link” as Viewer. Google may restrict embedded previews in some browsers; the Open in Drive buttons remain available.</div>
+  </section>
+</main>
+<footer>Made with all my love, Pritimika. ♡</footer>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut }
+  from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+import { getFirestore, collection, addDoc, query, orderBy, onSnapshot, serverTimestamp }
+  from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+import { getStorage, ref, uploadBytes, getDownloadURL }
+  from "https://www.gstatic.com/firebasejs/10.14.1/firebase-storage.js";
+
+// Paste your Firebase Web App config here (Firebase Console > Project settings > Your apps).
+const firebaseConfig = {
+  apiKey: "PASTE_API_KEY",
+  authDomain: "PASTE_PROJECT_ID.firebaseapp.com",
+  projectId: "PASTE_PROJECT_ID",
+  storageBucket: "PASTE_PROJECT_ID.appspot.com",
+  messagingSenderId: "PASTE_MESSAGING_SENDER_ID",
+  appId: "PASTE_APP_ID"
+};
+
+const configured = !Object.values(firebaseConfig).some(v => String(v).startsWith("PASTE_"));
+const $ = id => document.getElementById(id);
+const loginPanel=$("loginPanel"), appPanel=$("appPanel"), authMessage=$("authMessage");
+let auth, db, storage;
+if(configured){
+  const app=initializeApp(firebaseConfig); auth=getAuth(app); db=getFirestore(app); storage=getStorage(app);
+}else{
+  authMessage.textContent="Almost ready! Add your Firebase Web App config in index.html, then refresh this page.";
+  authMessage.classList.remove("hidden");
+  ["loginBtn","signupBtn"].forEach(id=>$(id).disabled=true);
+}
+$("loginBtn").onclick=async()=>{try{await signInWithEmailAndPassword(auth,$("email").value,$("password").value);showAuthMessage("");}catch(e){showAuthMessage(e.message);}};
+$("signupBtn").onclick=async()=>{try{await createUserWithEmailAndPassword(auth,$("email").value,$("password").value);showAuthMessage("Account created. You are signed in!");}catch(e){showAuthMessage(e.message);}};
+$("signOutBtn").onclick=()=>signOut(auth);
+function showAuthMessage(msg){authMessage.textContent=msg;authMessage.classList.toggle("hidden",!msg);}
+function showUploadMessage(msg){$("uploadMessage").textContent=msg;$("uploadMessage").classList.remove("hidden");}
+if(configured) onAuthStateChanged(auth,user=>{
+  loginPanel.classList.toggle("hidden",!!user); appPanel.classList.toggle("hidden",!user);
+  $("signOutBtn").classList.toggle("hidden",!user); $("userLabel").textContent=user?user.email:"";
+  if(user) loadGallery();
+});
+function loadGallery(){
+  onSnapshot(query(collection(db,"memories"),orderBy("createdAt","desc")),snap=>{
+    const gallery=$("gallery");gallery.innerHTML="";
+    $("emptyState").classList.toggle("hidden",!snap.empty);
+    snap.forEach(docSnap=>{
+      const m=docSnap.data(), card=document.createElement("article");card.className="card";
+      let media;
+      if(m.type?.startsWith("video/")){media=document.createElement("video");media.controls=true;}
+      else{media=document.createElement("img");media.alt=m.title||"A memory";}
+      media.src=m.url;card.appendChild(media);
+      const caption=document.createElement("div");caption.className="caption";
+      caption.textContent=[m.title,m.date,m.note].filter(Boolean).join(" · ");card.appendChild(caption);gallery.appendChild(card);
+    });
+  },err=>showUploadMessage("Could not load memories: "+err.message));
+}
+$("uploadBtn").onclick=async()=>{
+  const file=$("mediaFile").files[0];if(!file){showUploadMessage("Choose a photo or video first.");return;}
+  const user=auth.currentUser;if(!user)return;
+  $("uploadBtn").disabled=true;
+  try{
+    const safeName=file.name.replace(/[^a-zA-Z0-9._-]/g,"_");
+    const path=`memories/${user.uid}/${Date.now()}-${safeName}`;
+    const fileRef=ref(storage,path);await uploadBytes(fileRef,file);
+    const url=await getDownloadURL(fileRef);
+    await addDoc(collection(db,"memories"),{title:$("memoryTitle").value.trim(),date:$("memoryDate").value,note:$("memoryNote").value.trim(),url,type:file.type,storagePath:path,ownerUid:user.uid,createdAt:serverTimestamp()});
+    $("memoryTitle").value="";$("memoryDate").value="";$("memoryNote").value="";$("mediaFile").value="";
+    showUploadMessage("Your memory has been added. ♡");
+  }catch(e){showUploadMessage("Upload failed: "+e.message);}
+  finally{$("uploadBtn").disabled=false;}
+};
+</script>
+</body>
+</html>
