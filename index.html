@@ -1,19 +1,4 @@
-https://drive.google.com/file/d/1-qYUKqxudJMlKLoNkhx5ptH7aFwKvONw/view?usp=drivesdkroot{
---pink:#d9d9d9;
---rose:#777777;
---ink:#eeeeee;
---cream:#111111;
---lilac:#333333
-}
 
-*{box-sizing:border-box}
-
-body{
-margin:0;
-font-family:Georgia,serif;
-color:#eeeeee;
-background:linear-gradient(135deg,#000000,#222222,#444444);
-min-height:100vh
 }<!doctype html>
 <html lang="en">
 <head>
@@ -42,7 +27,6 @@ h2{font-size:1.8rem;font-weight:400;margin:0 0 8px;color:#713b5a}.muted{color:#8
 input,textarea{width:100%;padding:13px 14px;border:1px solid #e8cbd9;border-radius:12px;background:#fff;font:1rem system-ui;color:var(--ink);margin:7px 0 13px}
 label{font:600 .85rem system-ui;color:#76566b}
 .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.hidden{display:none!important}.notice{padding:12px 14px;border-radius:12px;background:#fff0f6;color:#854666;font: .9rem/1.5 system-ui;margin-top:12px}
 footer{text-align:center;padding:25px;color:#a17f93;font: .85rem system-ui}
 @media(max-width:600px){header{padding:20px 5vw}.hero{padding-top:42px}.row{grid-template-columns:1fr}.panel{padding:19px}}
 </style>
@@ -62,8 +46,6 @@ footer{text-align:center;padding:25px;color:#a17f93;font: .85rem system-ui}
     <p class="subtitle">Every picture, every video, every tiny moment — a collection of memories that mean everything.</p>
     <div class="heart">♡</div>
   </section>
-
-  <section id="loginPanel" class="panel">
     <h2>Welcome back, love</h2>
     <p class="muted">Sign in to see and add your memories.</p>
     <label for="email">Email</label><input id="email" type="email" placeholder="you@example.com" autocomplete="username">
@@ -71,9 +53,6 @@ footer{text-align:center;padding:25px;color:#a17f93;font: .85rem system-ui}
     <button id="loginBtn">Sign in ♡</button>
     <button id="signupBtn" class="secondary">Create account</button>
     <div id="authMessage" class="notice hidden"></div>
-  </section>
-
-  <section id="appPanel" class="hidden">
     <section class="panel">
       <h2>Our memories</h2>
       <p class="muted">A collection of our sweetest moments, made just for you, Pritimika.</p>
@@ -110,8 +89,6 @@ footer{text-align:center;padding:25px;color:#a17f93;font: .85rem system-ui}
   </section>
 </main>
 <footer>Made with all my love, Pritimika. ♡</footer>
-
-<script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
 import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut }
   from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
